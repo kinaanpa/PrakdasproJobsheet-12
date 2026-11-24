@@ -1,7 +1,19 @@
 package Jobsheet12;
 
+import java.util.Scanner;
+
 public class Kafe10 {
-     public static void Menu() {
+    public static void Menu(String namaPelanggan, boolean isMember, int jamKunjung) {
+        System.out.println("Selamat datang, " + namaPelanggan + "!");
+
+        if (isMember) {
+            System.out.println("Anda adalah member, dapatkan diskon 10% untuk setiap pembelian!");
+        }
+
+        if (jamKunjung >= 14 && jamKunjung <= 16) {
+            System.out.println("Happy Hour! Diskon 20% untuk semua minuman");
+        }
+
         System.out.println("===== MENU RESTO KAFE =====");
         System.out.println("1. Kopi Hitam - Rp 15,000");
         System.out.println("2. Cappuccino - Rp 20,000");
@@ -14,6 +26,20 @@ public class Kafe10 {
     }
 
     public static void main(String[] args) {
-        Menu();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Masukkan nama pelanggan: ");
+        String nama = sc.nextLine();
+
+        System.out.print("Apakah member? (y/n): ");
+        String status = sc.next();
+        boolean isMember = status.equalsIgnoreCase("y");
+
+        System.out.print("Masukkan jam kunjung: ");
+        int jam = sc.nextInt();
+
+        Menu(nama, isMember, jam);
+
+        sc.close();
     }
 }
